@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>VuePressを使ってみた | mayonaka</title>
+    <meta name="description" content="VuePressでブログを作ってみた話">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.cadf3281.css" as="style"><link rel="preload" href="/assets/js/app.b2171c06.js" as="script"><link rel="preload" href="/assets/js/2.2d30e341.js" as="script"><link rel="preload" href="/assets/js/9.a443d2ee.js" as="script"><link rel="prefetch" href="/assets/js/10.e41449b5.js"><link rel="prefetch" href="/assets/js/11.ae55f528.js"><link rel="prefetch" href="/assets/js/12.04164f75.js"><link rel="prefetch" href="/assets/js/3.22385f79.js"><link rel="prefetch" href="/assets/js/4.7a2c1a00.js"><link rel="prefetch" href="/assets/js/5.dde366b5.js"><link rel="prefetch" href="/assets/js/6.f47720e1.js"><link rel="prefetch" href="/assets/js/7.6987aba7.js"><link rel="prefetch" href="/assets/js/8.07beba58.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.cadf3281.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar shadow"><div class="sidebar-button shadow"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <div class="con-btns-header"><a href="/" class="home-link router-link-active"><div class="con-logo"><!----></div> <span class="site-name">mayonaka</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><a href="/blog/" class="nav-link router-link-active">Blog</a></div></nav></div></div> <div class="con-social"><a title="Github" href="https://github.com/myoshi1012" target="_blank" rel="noopener noreferrer" class="repo-link flaticon-github"></a> <a target="_blank" title="@shiratamagmag" href="https://twitter.com/shiratamagmag"><i class="flaticon-twitter twitterx"></i></a></div></header> <div class="sidebar-mask"></div> <aside class="sidebar shadow"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><a href="/blog/" class="nav-link router-link-active">Blog</a></div></nav>  <ul class="sidebar-links"><li><section class="sidebar-group first collapsable"><p class="sidebar-heading open"><span>2019</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/blog/2019/03/21/_21/" class="sidebar-link">aws-cdkを試してみる</a></li><li><a href="/blog/2019/01/27/_27/" class="active sidebar-link">VuePressを使ってみた</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="content default"><p>VuePressをインストールしてからgithub pagesで動かすまでのメモ。<br>
+せっかくなのでブログとして運用して行く。（このブログ）</p> <h2 id="モチベーション"><a href="#モチベーション" aria-hidden="true" class="header-anchor">#</a> モチベーション</h2> <p>Vueの勉強したいけどどこから手をつけようかと考えていたところ、VuePressなるスタティックサイトジェネレータ(?)を見つけて、これでブログでも作ってVueでカスタマイズしたらちょうどいいじゃん、と言うことでとりあえず形にしてみた。</p> <h2 id="インストール"><a href="#インストール" aria-hidden="true" class="header-anchor">#</a> インストール</h2> <p>yarnを使って必要なパッケージを入れていく。<br>
+blogプラグインはまだ開発段階らしく、ドキュメントもまともに書かれていないけどとりあえず入れた。</p> <div class="language-bash extra-class"><pre class="language-bash"><code>yarn add -D vuepress@next
+yarn add -D @vuepress/plugin-blog@next
+</code></pre></div><p>vuepressのGetting Startedを見るとグローバルインストールしているけど、同じように実行するとプラグインを認識しなかったのでローカルに入れた。</p> <h2 id="とりあえず試す"><a href="#とりあえず試す" aria-hidden="true" class="header-anchor">#</a> とりあえず試す</h2> <p>公式の<a href="https://vuepress.vuejs.org/guide/getting-started.html" target="_blank" rel="noopener noreferrer">Getting Started<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>の通りにdev server立ち上げてみた。<br>
+ドキュメントに書いてある通りなので省略。<br>
+コマンド一発でそれっぽいページが生成される。すごい。</p> <h3 id="blog-pluginについて"><a href="#blog-pluginについて" aria-hidden="true" class="header-anchor">#</a> blog-pluginについて</h3> <p><code>postsDir</code>で指定したディレクトリ内のファイルのfrontmatterから日付を取得して階層になるようにページを生成してくれる。<br>
+例えば、frontmatterに<code>date: 2019-01-27</code>と書くと、以下のようにページが生成される。</p> <div class="language- extra-class"><pre class="language-text"><code>blog
+└── 2019
+    └── 01
+        └── 27
+            └─ &lt;file name&gt;
+                └── index.html
+</code></pre></div><h2 id="ブログっぽくしてみる"><a href="#ブログっぽくしてみる" aria-hidden="true" class="header-anchor">#</a> ブログっぽくしてみる</h2> <p>構成はこんな感じ。<br> <code>vuepress eject</code>でデフォルトのthemeを抽出している。</p> <div class="language-bash extra-class"><pre class="language-bash"><code>- my-blog
+    - .vuepress
+      - components
+      - config.js
+      - dist
+      - public
+      - styles
+      - theme
+      - utils.js
+  - README.md
+  ─ blog
+    - README.md
+  ─ node_modules
+  ─ package.json
+  ─ posts
+  ─ yarn.lock
+</code></pre></div><p>独自のコンポーネントを追加したりデフォルトのスタイルを上書きする場合は<code>.vuepress</code>下の各ディレクトリにファイルを作っていく。
+物足りない場合は<code>theme</code>ディレクトリ内のファイルを編集していく。</p> <h3 id="ブログのindexページの作成"><a href="#ブログのindexページの作成" aria-hidden="true" class="header-anchor">#</a> ブログのindexページの作成</h3> <p>記事の一覧ページは欲しい。でもblog-pluginにもまだない…。<br>
+と思いつつググると<a href="https://snipcart.com/blog/vuepress-tutorial-vuejs-documentation" target="_blank" rel="noopener noreferrer">素晴らしい記事<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>あったので、<s>コピペ</s>参考にさせていただいた。感謝😌</p> <h3 id="サイドバーの作成"><a href="#サイドバーの作成" aria-hidden="true" class="header-anchor">#</a> サイドバーの作成</h3> <p>ブログなのでアーカイブやタグから記事を選択したい。でもblog-pluginにもまだない…。<br>
+ので既にやってる人の<a href="https://github.com/Deadalusmask/Arthas.me" target="_blank" rel="noopener noreferrer">ブログ<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> を<s>コピペ</s>参考にさせていただいた。<br>
+componentではなく、config.jsが読み込める形式の文字列を返す関数を実装しているだけなので、そのうちcomponentとしてthemeに組み込んでいきたい。</p> <h2 id="参考"><a href="#参考" aria-hidden="true" class="header-anchor">#</a> 参考</h2> <p><a href="https://github.com/Deadalusmask/Arthas.me" target="_blank" rel="noopener noreferrer">https://github.com/Deadalusmask/Arthas.me<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a><br> <a href="https://snipcart.com/blog/vuepress-tutorial-vuejs-documentation" target="_blank" rel="noopener noreferrer">https://snipcart.com/blog/vuepress-tutorial-vuejs-documentation<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/blog/2019/03/21/_21/" class="prev">
+          aws-cdkを試してみる
+        </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.b2171c06.js" defer></script><script src="/assets/js/2.2d30e341.js" defer></script><script src="/assets/js/9.a443d2ee.js" defer></script>
+  </body>
+</html>

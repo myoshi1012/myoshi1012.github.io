@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>aws-cdkを試してみる | mayonaka</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.cadf3281.css" as="style"><link rel="preload" href="/assets/js/app.b2171c06.js" as="script"><link rel="preload" href="/assets/js/2.2d30e341.js" as="script"><link rel="preload" href="/assets/js/10.e41449b5.js" as="script"><link rel="prefetch" href="/assets/js/11.ae55f528.js"><link rel="prefetch" href="/assets/js/12.04164f75.js"><link rel="prefetch" href="/assets/js/3.22385f79.js"><link rel="prefetch" href="/assets/js/4.7a2c1a00.js"><link rel="prefetch" href="/assets/js/5.dde366b5.js"><link rel="prefetch" href="/assets/js/6.f47720e1.js"><link rel="prefetch" href="/assets/js/7.6987aba7.js"><link rel="prefetch" href="/assets/js/8.07beba58.js"><link rel="prefetch" href="/assets/js/9.a443d2ee.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.cadf3281.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar shadow"><div class="sidebar-button shadow"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <div class="con-btns-header"><a href="/" class="home-link router-link-active"><div class="con-logo"><!----></div> <span class="site-name">mayonaka</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><a href="/blog/" class="nav-link router-link-active">Blog</a></div></nav></div></div> <div class="con-social"><a title="Github" href="https://github.com/myoshi1012" target="_blank" rel="noopener noreferrer" class="repo-link flaticon-github"></a> <a target="_blank" title="@shiratamagmag" href="https://twitter.com/shiratamagmag"><i class="flaticon-twitter twitterx"></i></a></div></header> <div class="sidebar-mask"></div> <aside class="sidebar shadow"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><a href="/blog/" class="nav-link router-link-active">Blog</a></div></nav>  <ul class="sidebar-links"><li><section class="sidebar-group first collapsable"><p class="sidebar-heading open"><span>2019</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/blog/2019/03/21/_21/" class="active sidebar-link">aws-cdkを試してみる</a></li><li><a href="/blog/2019/01/27/_27/" class="sidebar-link">VuePressを使ってみた</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="content default"><h1 id="aws-cdkとは"><a href="#aws-cdkとは" aria-hidden="true" class="header-anchor">#</a> aws-cdkとは</h1> <p><a href="https://docs.aws.amazon.com/ja_jp/CDK/latest/userguide/what-is.html" target="_blank" rel="noopener noreferrer">https://docs.aws.amazon.com/CDK/latest/userguide/what-is.html<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a><br>
+ここに書いてある</p> <p>要はプログラミング言語(js,ts,java,.net)でCloudformationのスタックを作成するためのフレームワーク。
+長くなりがちなyamlテンプレートを書かずにCloudformationスタックが良い感じに生成できるらしい。</p> <h2 id="コンセプト"><a href="#コンセプト" aria-hidden="true" class="header-anchor">#</a> コンセプト</h2> <p>ドキュメントに書いてある通りなんだけど、理解が浅いのでまとめておく。</p> <h3 id="constructs"><a href="#constructs" aria-hidden="true" class="header-anchor">#</a> Constructs</h3> <ul><li>cloud componentと考えることができる</li> <li>ConstructsはContructsを含めることができる</li> <li>AWS CDKの中のものは全部Constructs</li> <li>SDKやCloudformationで提供されているようなAWSのリソースはConstructs Libraryとして提供される</li></ul> <p>みたいなことが書いてあるので、Contructsを組み合わせてアプリケーションを作っていくことになるんだと思う。<br>
+レゴみたいな感じか（適当）</p> <h3 id="apps-と-stacks"><a href="#apps-と-stacks" aria-hidden="true" class="header-anchor">#</a> Apps と Stacks</h3> <h4 id="apps"><a href="#apps" aria-hidden="true" class="header-anchor">#</a> Apps</h4> <p>stackの集合体。完成品みいたいな感じか。</p> <h4 id="stacks"><a href="#stacks" aria-hidden="true" class="header-anchor">#</a> Stacks</h4> <p>AWSの環境にデプロイできるConstructsとある。<br>
+ConstructsがClassとして定義されるので、つまるところインスタンスって感じか。</p> <h1 id="やってみる"><a href="#やってみる" aria-hidden="true" class="header-anchor">#</a> やってみる</h1> <p>CDKのドキュメントはまだ薄いし、AWSは触ってみた方が理解が進むのでとりあえず触ってみる。<br>
+言語は勉強を兼ねてtsを使う。</p> <p><a href="https://docs.aws.amazon.com/CDK/latest/userguide/serverless_tutorial.html" target="_blank" rel="noopener noreferrer">https://docs.aws.amazon.com/CDK/latest/userguide/serverless_tutorial.html<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a><br>
+チュートリアルを参考にする。</p> <div class="language- extra-class"><pre class="language-text"><code>~/develop
+❯ mkdir myFirstCdk
+❯ cd myFirstCdk
+
+~/develop/myFirstCdk
+❯ cdk init --language typescript
+
+~/develop/myFirstCdk master*
+❯ ls -a
+.                 .git              .npmignore        bin               lib               package-lock.json tsconfig.json
+..                .gitignore        README.md         cdk.json          node_modules      package.json
+
+~/develop/myFirstCdk master* 10s
+❯ npm run build
+
+&gt; my_first_cdk@0.1.0 build /Users/myoshi/develop/myFirstCdk
+&gt; tsc
+
+
+~/develop/myFirstCdk master*
+❯ cdk synth
+The stack MyFirstCdkStack already includes a CDKMetadata resource
+Resources: {}
+</code></pre></div><p><code>cdk init</code>するだけで一気にリソースが作られた上にgit管理された。めっちゃ楽。<br> <code>bin/</code>がapp作成用、<code>lib/</code>にstack(Constructs?)を入れていくっぽい。</p> <p>お仕事ではbeanstalkをよく使うので、とりあえずbeanstalkのapplicationとenvironmentを作ってみる。<br>
+(尚、昨日マージされた<a href="https://github.com/aws-samples/aws-cdk-examples/tree/master/typescript/elasticbeanstalk/elasticbeanstalk-environment" target="_blank" rel="noopener noreferrer">example<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>が存在するのでこれを <s>コピペ</s> 参考にします🐢…)</p> <p>lib/my_first_cdk-stack.ts</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">import</span> cdk <span class="token operator">=</span> <span class="token keyword">require</span><span class="token punctuation">(</span><span class="token string">'@aws-cdk/cdk'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> elasticbeanstalk <span class="token operator">=</span> <span class="token keyword">require</span><span class="token punctuation">(</span><span class="token string">'@aws-cdk/aws-elasticbeanstalk'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">MyFirstCdkStack</span> <span class="token keyword">extends</span> <span class="token class-name">cdk<span class="token punctuation">.</span>Stack</span> <span class="token punctuation">{</span>
+  <span class="token keyword">constructor</span><span class="token punctuation">(</span>scope<span class="token punctuation">:</span> cdk<span class="token punctuation">.</span>Construct<span class="token punctuation">,</span> id<span class="token punctuation">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> props<span class="token operator">?</span><span class="token punctuation">:</span> cdk<span class="token punctuation">.</span>StackProps<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span>scope<span class="token punctuation">,</span> id<span class="token punctuation">,</span> props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//objects for access parameters</span>
+    <span class="token keyword">const</span> node <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>node<span class="token punctuation">;</span>
+
+    <span class="token keyword">const</span> solutionStackName <span class="token operator">=</span> node<span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token string">&quot;solutionStackName&quot;</span><span class="token punctuation">)</span>
+
+
+    <span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">elasticbeanstalk<span class="token punctuation">.</span>CfnApplication</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token string">'Application'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      applicationName<span class="token punctuation">:</span> <span class="token string">&quot;MyApp&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">new</span> <span class="token class-name">elasticbeanstalk<span class="token punctuation">.</span>CfnEnvironment</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token string">'Environment'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      environmentName<span class="token punctuation">:</span> <span class="token string">'MySampleEnvironment'</span><span class="token punctuation">,</span>
+      applicationName<span class="token punctuation">:</span> app<span class="token punctuation">.</span>applicationName<span class="token punctuation">,</span>
+      solutionStackName<span class="token punctuation">:</span> solutionStackName
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>context（コマンドラインのパラメータ）でplatformを指定するようにしました。(実運用ではplatformはアプリケーションごとに決まってると思うので、わざわざパラメータにする必要はなさそう。)<br>
+存在するsolution stack名は<code>aws elasticbeanstalk list-available-solution-stacks --query 'SolutionStacks[]'</code>で一覧取得できる。
+ビルドして作成されるCloudformationスタックのtemplateを確認してみる。</p> <div class="language- extra-class"><pre class="language-text"><code>~/develop/myFirstCdk master*
+❯ npm run build
+
+&gt; my_first_cdk@0.1.0 build /Users/myoshi/develop/myFirstCdk
+&gt; tsc
+
+
+~/develop/myFirstCdk master*
+❯ cdk synth -c solutionStackName=&quot;64bit Amazon Linux 2018.03 v4.8.1 running Node.js&quot;
+Resources:
+  Application:
+    Type: AWS::ElasticBeanstalk::Application
+    Properties:
+      ApplicationName: MyApp
+    Metadata:
+      aws:cdk:path: MyFirstCdkStack/Application
+  Environment:
+    Type: AWS::ElasticBeanstalk::Environment
+    Properties:
+      ApplicationName:
+        Ref: Application
+      EnvironmentName: MySampleEnvironment
+      SolutionStackName: 64bit Amazon Linux 2018.03 v4.8.1 running Node.js
+    Metadata:
+      aws:cdk:path: MyFirstCdkStack/Environment
+  CDKMetadata:
+    Type: AWS::CDK::Metadata
+    Properties:
+      Modules: aws-cdk=0.26.0,@aws-cdk/aws-elasticbeanstalk=0.26.0,@aws-cdk/cdk=0.26.0,@aws-cdk/cx-api=0.26.0,jsii-runtime=node.js/v11.12.0
+</code></pre></div><p>よさそうなので、AWSにデプロイしてみる。
+最初はbootstrapが必要らしい。差分取得するためのS3バケットが作成されるとのこと。</p> <div class="language- extra-class"><pre class="language-text"><code>~/develop/myFirstCdk master*
+❯ cdk bootstrap
+</code></pre></div><p>デプロイ</p> <div class="language- extra-class"><pre class="language-text"><code>❯ cdk deploy -c solutionStackName=&quot;64bit Amazon Linux 2018.03 v4.8.1 running Node.js&quot;
+MyFirstCdkStack: deploying...
+MyFirstCdkStack: creating CloudFormation changeset...
+ 0/4 | 19:40:38 | CREATE_IN_PROGRESS   | AWS::ElasticBeanstalk::Application | Application
+ 0/4 | 19:40:38 | CREATE_IN_PROGRESS   | AWS::CDK::Metadata                 | CDKMetadata
+ 0/4 | 19:40:39 | CREATE_IN_PROGRESS   | AWS::ElasticBeanstalk::Application | Application Resource creation Initiated
+ 1/4 | 19:40:40 | CREATE_COMPLETE      | AWS::ElasticBeanstalk::Application | Application
+ 1/4 | 19:40:41 | CREATE_IN_PROGRESS   | AWS::CDK::Metadata                 | CDKMetadata Resource creation Initiated
+ 2/4 | 19:40:41 | CREATE_COMPLETE      | AWS::CDK::Metadata                 | CDKMetadata
+ 2/4 | 19:40:44 | CREATE_IN_PROGRESS   | AWS::ElasticBeanstalk::Environment | Environment
+ 2/4 | 19:40:47 | CREATE_IN_PROGRESS   | AWS::ElasticBeanstalk::Environment | Environment Resource creation Initiated
+2/4 Currently in progress: Environment
+ 3/4 | 19:43:20 | CREATE_COMPLETE      | AWS::ElasticBeanstalk::Environment | Environment
+ 4/4 | 19:43:22 | CREATE_COMPLETE      | AWS::CloudFormation::Stack         | MyFirstCdkStack
+
+ ✅  MyFirstCdkStack
+
+Stack ARN:
+&lt;ここにArnが表示される&gt;
+</code></pre></div><p>これでbeanstalkのリソースが作成された。</p> <h1 id="雑感"><a href="#雑感" aria-hidden="true" class="header-anchor">#</a> 雑感</h1> <p>CloudformatioinのYAMLのtemplateをガリガリ書くよりは楽そう。ほぼプログラミングなので、アプリケーションエンジニアもAWSのリソース管理をしやすいと思う。ただyamlと違ってぱっと見何のリソースが存在するのかわかりにくいので、typescriptのコメントを活用してドキュメント作るなり何かしら対処しないと管理が煩雑になりそう。<br>
+beanstalkは仕組み上、環境差分が作りにくかったりするけどcdkで解消できそうだし、マルチアカウント、マルチリージョンも実現しやすそうなので次回はその辺りを検証してみたい。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/blog/2019/01/27/_27/">
+          VuePressを使ってみた
+        </a>
+        →
+      </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.b2171c06.js" defer></script><script src="/assets/js/2.2d30e341.js" defer></script><script src="/assets/js/10.e41449b5.js" defer></script>
+  </body>
+</html>
