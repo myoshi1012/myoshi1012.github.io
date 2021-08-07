@@ -1,8 +1,9 @@
-import React from 'react';
-import Head from 'next/head';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Layout from '../../components/Layout';
+import Head from 'next/head';
+import React from 'react';
+
 import Date from '../../components/Date';
+import Layout from '../../components/Layout';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 import utilStyles from '../../styles/utils.module.css';
 

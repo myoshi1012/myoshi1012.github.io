@@ -7,8 +7,9 @@
     "build": "next build",
     "start": "next start",
     "export": "next export",
-    "lint": "eslint '*/**/*.{js,ts,tsx}'",
-    "lint:fix": "eslint '*/**/*.{js,ts,tsx}' --fix"
+    "lint": "eslint --ext .ts,.tsx --ignore-path .eslintignore .",
+    "lint:quiet": "eslint --quiet --ext .ts,.tsx --ignore-path .eslintignore .",
+    "lint:fix": "eslint --fix --ext .ts,.tsx --ignore-path .eslintignore ."
   },
   "dependencies": {
     "date-fns": "^2.11.1",
@@ -23,18 +24,19 @@
     "remark-html": "^12.0.0"
   },
   "devDependencies": {
+    "@types/gtag.js": "^0.0.7",
     "@types/node": "^14.14.31",
     "@types/react": "^17.0.2",
-    "@typescript-eslint/eslint-plugin": "^4.16.1",
-    "@typescript-eslint/parser": "^4.16.1",
-    "eslint": "^7.21.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-airbnb-typescript": "^12.3.1",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-import": "^2.22.1",
+    "@typescript-eslint/eslint-plugin": "^4.29.0",
+    "@typescript-eslint/parser": "^4.29.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
     "prettier": "^2.2.1",
     "typescript": "^4.2.3",
     "url-loader": "^1.1.2"

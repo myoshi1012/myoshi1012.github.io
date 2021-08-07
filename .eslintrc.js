@@ -1,49 +1,101 @@
 module.exports = {
   root: true,
-  parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint"],
-  extends: [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "airbnb-typescript",
-    "airbnb/hooks",
-    "plugin:@typescript-eslint/recommended",
-    // 'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    "plugin:prettier/recommended"
-  ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 2020, // Allows for the parsing of modern ECMAScript features
-    sourceType: "module", // Allows for the use of imports
+    ecmaVersion: 2020,
+    sourceType: 'module',
     ecmaFeatures: {
-      jsx: true, // Allows for the parsing of JSX
+      jsx: true,
     },
-    project: "./tsconfig.json"
   },
   settings: {
     react: {
-      version: "detect", // Tells eslint-plugin-react to automatically detect the version of React to use
+      version: 'detect',
     },
   },
   env: {
-    node: true,
     browser: true,
-    es6: true,
+    amd: true,
+    node: true,
   },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:jsx-a11y/recommended',
+    'plugin:prettier/recommended', // Make sure this is always the last element in the array.
+  ],
+  plugins: ['simple-import-sort', 'prettier', '@typescript-eslint'],
   rules: {
-    "prettier/prettier": [
-      "error",
+    'prettier/prettier': ['error', {}, { usePrettierrc: true }],
+    'jsx-a11y/accessible-emoji': 'off',
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
+    'jsx-a11y/anchor-is-valid': [
+      'error',
       {
-        "singleQuote": true,
-        "trailingComma": "es5",
-        "printWidth": 100
-      }
+        components: ['Link'],
+        specialLink: ['hrefLeft', 'hrefRight'],
+        aspects: ['invalidHref', 'preferButton'],
+      },
     ],
-    'react/prop-types': 0,
-    'react/destructuring-assignment': 0,
-    'react/static-property-placement': 0,
-    'jsx-a11y/alt-text': 0,
-    'react/jsx-props-no-spreading': 0,
-    'react/require-default-props': 0,
-    'jsx-a11y/anchor-is-valid': 0,
-  }
+    'no-unused-vars': 'off',
+    'block-scoped-var': 'error',
+    eqeqeq: 'error',
+    'no-var': 'error',
+    'prefer-const': 'error',
+    'eol-last': 'error',
+    'prefer-arrow-callback': 'error',
+    'no-trailing-spaces': 'error',
+    quotes: ['warn', 'single', { avoidEscape: true }],
+    'no-restricted-properties': [
+      'error',
+      {
+        object: 'describe',
+        property: 'only',
+      },
+      {
+        object: 'it',
+        property: 'only',
+      },
+    ],
+  },
+  overrides: [
+    {
+      files: ['**/*.ts', '**/*.tsx'],
+      parser: '@typescript-eslint/parser',
+      extends: ['plugin:@typescript-eslint/recommended'],
+      rules: {
+        'react/self-closing-comp': [
+          'error',
+          {
+            component: true,
+            html: true,
+          },
+        ],
+        'react/react-in-jsx-scope': 'off',
+        'react/prop-types': 'off',
+        '@typescript-eslint/no-unused-vars': 'error',
+        '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/no-non-null-assertion': 'off',
+        '@typescript-eslint/no-use-before-define': 'off',
+        '@typescript-eslint/no-warning-comments': 'off',
+        '@typescript-eslint/no-empty-function': 'off',
+        '@typescript-eslint/no-var-requires': 'off',
+        '@typescript-eslint/ban-types': 'off',
+        '@typescript-eslint/camelcase': 'off',
+        'node/no-missing-import': 'off',
+        'node/no-empty-function': 'off',
+        'node/no-unsupported-features/es-syntax': 'off',
+        'node/no-missing-require': 'off',
+        'node/shebang': 'off',
+        'no-dupe-class-members': 'off',
+        'require-atomic-updates': 'off',
+      },
+      parserOptions: {
+        ecmaVersion: 2018,
+        sourceType: 'module',
+      },
+    },
+  ],
 };
