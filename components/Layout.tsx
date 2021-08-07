@@ -5,6 +5,8 @@ import Link from 'next/link';
 import styles from './Layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 
+import profile from '../assets/images/profile.jpg';
+
 const name = '[myo]';
 export const siteTitle = "myo' blog";
 
@@ -32,9 +34,8 @@ export default function Layout({
       <header className={styles.header}>
         {home ? (
           <>
-            <Image
-              priority
-              src="/images/profile.jpg"
+            <img
+              src={profile}
               className={utilStyles.borderCircle}
               height={144}
               width={144}
@@ -46,9 +47,8 @@ export default function Layout({
           <>
             <Link href="/">
               <a>
-                <Image
-                  priority
-                  src="/images/profile.jpg"
+                <img
+                  src={profile}
                   className={utilStyles.borderCircle}
                   height={108}
                   width={108}
